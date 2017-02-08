@@ -9,8 +9,41 @@
     secondValueAdded: false
   }
 
+  var addTheListeners = function(){
+    var calculator = document.querySelector('.calculator-body')
+    calculator.addEventListener('click', function(event){
+      if(event.target.matches('.calculator-button:not(#flip), #decimal')){
+        displayValue(event.target.innerHTML)
+      }else if(event.target.matches('#divide, #multiply, #subtract, #add')){
+        getOperand(event.target.innerHTML)
+      }else if(event.target.matches('#AC')){
+        allClear()
+      }else if(event.target.matches('#percentage')){
+        percent()
+      }else if(event.target.matches('#equals')){
+        calculate()
+      }else if(event.target.matches('#flip')){
+        flipSign()
+      }
+    })
+  }
+  addTheListeners()
+
+  var changeFontSize = function(){
+    var maxLength = document.getElementsByClassName('calculator-valueDisplay')[0]
+    var currentLength = document.getElementsByClassName('calculator-valueDisplay')[0].innerHTML
+    if(currentLength.length >= maxLength.attributes.maxlength.value - 2){
+      maxLength.style.fontSize = "30px"
+    }
+  }
   var displayValue = function(num){
-    console.log('here');
+    if(display.secondValueAdded){
+      display.firstValueAdded = false
+      display.secondValueAdded = false
+      display.first = display.result
+      display.second = 0
+      display.current[0].innerHTML = 0
+    }
     changeFontSize()
     if(!display.firstValueAdded){
       display.current = document.getElementsByClassName('calculator-valueDisplay')
@@ -30,31 +63,7 @@
       display.current[0].innerHTML += num
     }
   }
-  var addEventListeners = function(){
-    document.querySelectorAll('calculator-button:not(calculator-button-right):not(calculator-button-bottom-right):not(calculator-button-bottom-right-right)')
-      .forEach(function(element) {
-        element.addEventListener('click', function(event) {
-          console.log(event.target.innerHTML)
-          displayValue(event.target.innerHTML)
-        })
-      })
-    document.querySelectorAll('calculator-button-right):not(calculator-button-bottom-right):not(calculator-button-bottom-right-right)')
-      .forEach(function(element) {
-        element.addEventListener('click', function(event) {
-          displayValue(event.target.innerHTML)
-        })
-      })
-  }
-  addEventListeners()
-  var changeFontSize = function(){
-    var maxLength = document.getElementsByClassName('calculator-valueDisplay')[0]
-    var currentLength = document.getElementsByClassName('calculator-valueDisplay')[0].innerHTML
-    if(currentLength.length > maxLength.attributes.maxlength.value){
-      maxLength.style.fontSize = - 10%
-      // maxLength.attributes.maxlength.value + 20
-    }
-    console.log(currentLength.length);
-  }
+
   var getOperand = function(symbol){
     if(display.operand !== ''){
       display.operand = ''
@@ -69,9 +78,17 @@
         calculate()
         display.operand = '-'
         break
+      case 'X':
+        calculate()
+        display.operand = '*'
+        break
       case '*':
         calculate()
         display.operand = '*'
+        break
+      case '÷':
+        calculate()
+        display.operand = '/'
         break
       case '/':
         calculate()
@@ -84,6 +101,7 @@
   var calculate = function() {
     if(display.first !==0){
       display.second = display.current[0].innerHTML
+      display.secondValueAdded = true
       if(display.second !== 0){
         switch(display.operand){
           case '+':
@@ -106,6 +124,7 @@
 
   var allClear = function() {
     display.current[0].innerHTML = 0
+    display.current[0].style.fontSize = "70px"
     display.first = 0
     display.second = 0
     display.operand = ''
@@ -115,11 +134,10 @@
   }
 
   var flipSign = function() {
-    if(display.current[0].innerHTML > 0){
-      Math.abs(display.current[0].innerHTML)
-      display.current[0].innerHTML = '-' + display.current[0].innerHTML
+    var toFlip = display.current[0].innerHTML
+    if(toFlip > 0){
+      display.current[0].innerHTML = '-' + toFlip
     }else{
-      Math.abs(display.current[0].innerHTML)
       var flip = display.current[0].innerHTML.indexOf('-')
       display.current[0].innerHTML = display.current[0].innerHTML.slice(flip+1)
     }
@@ -127,6 +145,19 @@
 
   var percent = function() {
     var perc = display.current[0].innerHTML
-    display.current[0].innerHTML = (perc / 100).toFixed(2)
+    var removeIndex = perc.indexOf('%')
+    var toBeCalculated = perc.replace(/\% ?/g, "")
+    display.current[0].innerHTML = (toBeCalculated / 100).toFixed(2)
+  }
+
+  var isOperand = function(sym){
+    return sym == '+' || sym == '-' || sym == '/' || sym == '*'
+  }
+  window.onkeydown = function(event){
+    if(parseInt(event.key) || event.key == 0){ displayValue(event.key) }
+    console.log(event.key)
+    if(isOperand(event.key)) { getOperand(event.key) }
+    if(event.key == '=') { calculate() }
+    if(event.key == '.') { displayValue('.') }
   }
 })()
