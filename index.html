@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="index.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="https://necolas.github.io/normalize.css/5.0.0/normalize.css" rel="stylesheet">
+  <script type="text/JavaScript" src="index.js"></script>
+  <meta charset="utf-8">
+</head>
+<body>
+  <h1 class="calculator-title">CALCULATOR</h1>
+  <div class="calculator-body">
+    <div type="text" class="calculator-valueDisplay" maxlength="13" ></div>
+    <button id="AC" class="calculator-button" onclick="allClear()">AC</button>
+    <button id="AC" class="calculator-button" onclick="flipSign()">+/-</button>
+    <button id="percentage" class="calculator-button" onclick="percent()">%</button>
+    <button id="divide" class="calculator-button-right" onclick="getOperand('/')">&#247</button>
+    <button class="calculator-button">7</button>
+    <button class="calculator-button">8</button>
+    <button class="calculator-button">9</button>
+    <button id="multiply" class="calculator-button-right" onclick="getOperand('*')">X</button>
+    <button class="calculator-button">4</button>
+    <button class="calculator-button">5</button>
+    <button class="calculator-button">6</button>
+    <button id="subtract" class="calculator-button-right" onclick="getOperand('-')">--</button>
+    <button class="calculator-button">1</button>
+    <button class="calculator-button">2</button>
+    <button class="calculator-button">3</button>
+    <button id="add" class="calculator-button-right" onclick="getOperand('+')">+</button>
+    <button class="calculator-button-bottom-left">0</button>
+    <button id="decimal" class="calculator-button-bottom-right" onclick="displayValue(.)">.</button>
+    <button id="equals" class="calculator-button-bottom-right-right" onclick="calculate()">=</button>
+  </div>
+</body>
+</html>
