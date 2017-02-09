@@ -1,0 +1,193 @@
+body{
+  font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+  background-attachment: fixed;
+  background-image: url('http://www.fleming.kyschools.us/userfiles/316/Clipart%20Images/math.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  margin:auto;
+}
+.dock{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 27%;
+  left: 25%;
+}
+/*
+.calculator-title{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+}*/
+.calculator-body{
+  opacity: .5;
+  font-family: 'Roboto', sans-serif;
+  box-shadow: 30px 30px 100px grey;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border: 1px solid grey;
+  background-color: grey;
+  border-width: 1px;
+  border-radius: 10px;
+  width: 450px;
+  height: 640px;
+  margin-right: 20px;
+}
+.calculator-body:focus{
+  opacity: 1;
+}
+
+.calculator-valueDisplay{
+  font-family: 'Roboto', sans-serif;
+  background-color: grey;
+  color: white;
+  border-radius: 7px 7px 0px 0px;
+  width: 100%;
+  height: 90px;
+  padding-top: 10px;
+  padding-bottom: 0px;
+  padding-right: 3px;
+  text-align: right;
+  font-size: 70px;
+}
+
+.calculator-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 109.5px;
+  outline: none;
+  font-size: 150%;
+  background-color: #f2f2f2;
+  height: 105px;
+  border: 0.001px solid grey;
+}
+.calculator-button:hover{
+  background-color: #e6e6e6;
+}
+.calculator-button:active{
+  background-color: #d9d9d9;
+}
+.calculator-button-active{
+  background-color: #d9d9d9;
+}
+.calculator-button-clear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 109.5px;
+  outline: none;
+  font-size: 150%;
+  background-color: #f2f2f2;
+  height: 105px;
+  border: 0.01px solid grey;
+}
+.calculator-button-clear:hover{
+  background-color: #e6e6e6;
+}
+.calculator-button-clear:active{
+  background-color: #d9d9d9;
+}
+.calculator-button-clear-active{
+  background-color: #d9d9d9;
+}
+.calculator-button-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 109.5px;
+  outline: none;
+  background-color: orange;
+  font-size: 120%;
+  color: white;
+  height: 105px;
+  border: .5px solid grey;
+  border-right: .5px solid grey;
+}
+.calculator-button-right:hover{
+  background-color: #e68a00;
+}
+.calculator-button-right:active{
+  background-color: #cc7a00;
+}
+.calculator-button-right-active{
+  background-color: #cc7a00;
+}
+
+.calculator-button-bottom-right{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 109.5px;
+  outline: none;
+  text-align: center;
+  font-size: 150%;
+  background-color: #f2f2f2;
+  height: 105px;
+  border: 1.5px solid grey;
+  border-bottom: .5px solid grey;
+}
+.calculator-button-bottom-right:hover{
+  background-color: #e6e6e6;
+}
+.calculator-button-bottom-right:active{
+  background-color: #d9d9d9;
+}
+.calculator-button-bottom-right-active{
+  background-color: #d9d9d9;
+}
+.calculator-button-bottom-right-right{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 109.5px;
+  outline: none;
+  text-align: center;
+  font-size: 110%;
+  color: white;
+  background-color: orange;
+  height: 105px;
+  border: 1.5px solid grey;
+  border-bottom: 1.5px solid grey;
+  border-right: 1.5px solid grey;
+  border-radius: 0px 0px 7px 0px;
+}
+.calculator-button-bottom-right-right:hover{
+  background-color: #e68a00;
+}
+.calculator-button-bottom-right-right:active{
+  background-color: #cc7a00;
+}
+.calculator-button-bottom-right-right-active{
+  background-color: #cc7a00;
+}
+.calculator-button-bottom-left{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 222px;
+  outline: none;
+  text-align: center;
+  font-size: 150%;
+  background-color: #f2f2f2;
+  height: 105px;
+  border: 1.5px solid grey;
+  border-bottom: .5px solid grey;
+  border-radius: 0px 0px 0px 7px;
+}
+.calculator-button-bottom-left:hover{
+  background-color: #e6e6e6;
+}
+.calculator-button-bottom-left:active{
+  background-color: #d9d9d9;
+}
