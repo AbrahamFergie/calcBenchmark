@@ -34,7 +34,10 @@
     var currentLength = document.getElementsByClassName('calculator-valueDisplay')[0].innerHTML
     if(currentLength.length >= maxLength.attributes.maxlength.value - 2){
       maxLength.style.fontSize = "30px"
+    }else{
+      maxLength.style.fontSize = "70px"
     }
+
   }
   var displayValue = function(num){
     if(display.secondValueAdded){
@@ -118,6 +121,7 @@
             break
         }
         display.current[0].innerHTML = display.result
+        changeFontSize()
       }
     }
   }
@@ -150,14 +154,142 @@
     display.current[0].innerHTML = (toBeCalculated / 100).toFixed(2)
   }
 
+  var keyStrokeActive = function(event) {
+    event.attributes.matches('#AC')
+
+    console.log(event.target.attributes)
+  }
+
   var isOperand = function(sym){
     return sym == '+' || sym == '-' || sym == '/' || sym == '*'
   }
+  var assignClass = function(eventKey){
+    console.log(eventKey)
+    switch(eventKey){
+      case '0':
+        document.querySelector('#zero').classList
+        .add('calculator-button-active')
+        setTimeout(function(){document.querySelector('#zero').classList
+        .remove('calculator-button-active')}, 100)
+        break
+      case '1':
+        document.querySelector('#one').classList
+        .add('calculator-button-active')
+        setTimeout(function(){document.querySelector('#one').classList
+        .remove('calculator-button-active')}, 100)
+        break
+      case '2':
+        document.querySelector('#two').classList
+        .add('calculator-button-active')
+        setTimeout(function(){document.querySelector('#two').classList
+        .remove('calculator-button-active')}, 100)
+        break
+      case '3':
+        document.querySelector('#three').classList
+        .add('calculator-button-active')
+        setTimeout(function(){document.querySelector('#three').classList
+        .remove('calculator-button-active')}, 100)
+        break
+      case '4':
+        document.querySelector('#four').classList
+        .add('calculator-button-active')
+        setTimeout(function(){document.querySelector('#four').classList
+        .remove('calculator-button-active')}, 100)
+        break
+      case '5':
+        document.querySelector('#five').classList
+        .add('calculator-button-active')
+        setTimeout(function(){document.querySelector('#five').classList
+        .remove('calculator-button-active')}, 100)
+        break
+      case '6':
+        document.querySelector('#six').classList
+        .add('calculator-button-active')
+        setTimeout(function(){document.querySelector('#six').classList
+        .remove('calculator-button-active')}, 100)
+        break
+      case '7':
+        document.querySelector('#seven').classList
+        .add('calculator-button-active')
+        setTimeout(function(){document.querySelector('#seven').classList
+        .remove('calculator-button-active')}, 100)
+        break
+      case '8':
+        document.querySelector('#eight').classList
+        .add('calculator-button-active')
+        setTimeout(function(){document.querySelector('#eight').classList
+        .remove('calculator-button-active')}, 100)
+        break
+      case '9':
+        document.querySelector('#nine').classList
+        .add('calculator-button-active')
+        setTimeout(function(){document.querySelector('#nine').classList
+        .remove('calculator-button-active')}, 100)
+        break
+      case '+':
+        document.querySelector('#add').classList
+        .add('calculator-button-right-active')
+        setTimeout(function(){document.querySelector('#add').classList
+        .remove('calculator-button-right-active')}, 100)
+        break
+      case '-':
+        document.querySelector('#subtract').classList
+        .add('calculator-button-right-active')
+        setTimeout(function(){document.querySelector('#subtract').classList
+        .remove('calculator-button-right-active')}, 100)
+        break
+      case '*':
+        document.querySelector('#multiply').classList
+        .add('calculator-button-right-active')
+        setTimeout(function(){document.querySelector('#multiply').classList
+        .remove('calculator-button-right-active')}, 100)
+        break
+      case '/':
+        document.querySelector('#divide').classList
+        .add('calculator-button-right-active')
+        setTimeout(function(){document.querySelector('#divide').classList
+        .remove('calculator-button-right-active')}, 100)
+        break
+      case 'Clear':
+        document.querySelector('#AC').classList
+        .add('calculator-button-clear-active')
+        setTimeout(function(){document.querySelector('#AC').classList
+        .remove('calculator-button-clear-active')}, 100)
+        break
+      case '.':
+        document.querySelector('#decimal').classList
+        .add('calculator-button-bottom-right-active')
+        setTimeout(function(){document.querySelector('#decimal').classList
+        .remove('calculator-button-bottom-right-active')}, 100)
+        break
+      case '=':
+        document.querySelector('#equals').classList
+        .add('calculator-button-bottom-right-right-active')
+        setTimeout(function(){document.querySelector('#equals').classList
+        .remove('calculator-button-bottom-right-right-active')}, 100)
+        break
+    }
+  }
   window.onkeydown = function(event){
-    if(parseInt(event.key) || event.key == 0){ displayValue(event.key) }
-    console.log(event.key)
-    if(isOperand(event.key)) { getOperand(event.key) }
-    if(event.key == '=') { calculate() }
-    if(event.key == '.') { displayValue('.') }
+    if(parseInt(event.key) || event.key == 0){
+      assignClass(event.key)
+      displayValue(event.key)
+    }
+    if(isOperand(event.key)) {
+      assignClass(event.key)
+      getOperand(event.key)
+    }
+    if(event.key == '=') {
+      assignClass(event.key)
+      calculate()
+    }
+    if(event.key == '.') {
+      assignClass(event.key)
+      displayValue('.')
+    }
+    if(event.key == 'Clear') {
+      assignClass(event.key)
+      allClear()
+    }
   }
 })()
