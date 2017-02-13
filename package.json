@@ -1,0 +1,28 @@
+{
+  "name": "psychedelic-bandicoot",
+  "version": "1.0.0",
+  "description": "Benchmark project evaluating front end skills as a software developer.",
+  "main": "index.html",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AbrahamFergie/calcBenchmark.git"
+  },
+  "keywords": [
+    "psychedelic",
+    "bandicoot"
+  ],
+  "author": "Abraham Ferguson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AbrahamFergie/calcBenchmark/issues"
+  },
+  "dependencies": {
+    "debug": "~2.2.0",
+    "express": "^4.14.1",
+    "nodemon": "^1.11.0"
+  },
+  "homepage": "https://github.com/AbrahamFergie/calcBenchmark#readme"
+}
